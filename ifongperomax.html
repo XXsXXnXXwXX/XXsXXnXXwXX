@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPHONE UI/UX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="apple.png">
+    <style>
+        body {
+            margin: 0;
+            height: 110vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+            background-size: cover;
+            position: center;
+            transition: background-color 0.5s;
+        }
+        .iphone {
+            position: relative;
+        }
+        .iphone h1 {
+          color: #ffffff;
+          text-shadow: 0.1px 1px 10px rgb(255, 255, 255);
+          font-family: "Poppins", sans-serif;
+          position: absolute;
+          white-space: nowrap; /* Perbaikan di sini */
+          top: -340px;
+          left: -140px;
+          z-index: 300;
+        }
+        .screen {
+           background: url(https://i.ibb.co/qgGRL7s/Default.jpg) center center no-repeat;
+           background-size: cover;
+           width: 230px;
+           height: 480px;
+           border: 7px solid;
+           border-radius: 30px;
+           border-color: rgb(43, 39, 39);
+           position: absolute;
+           top: -250px;
+           left: -120px;
+           z-index: 2;
+           transition: background-image 0.5s ease-in-out;
+           filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+        }  
+
+        .frontcam { /*  KAMERA DEPAN */
+            background: rgb(0, 0, 0);
+            width: 75px;
+            height: 20px;
+            border-radius: 10px;
+            transform: rotate(180deg);
+            position: absolute;
+            top: -239px;
+            left: -35px;
+            z-index: 3;
+        }  
+        .backside {
+            background: rgb(255, 255, 255);
+            width: 233px;
+            height: 483px;
+            position: absolute;
+            top: -250.90px;
+            left: -120.75px;
+            z-index: 1;
+            border: 6px solid rgb(255, 255, 255);
+            border-radius: 30px;
+            box-shadow: 2px 1px 10px rgb(255, 255, 255);
+            opacity: 0.8;
+        }
+        .widget {
+            position: absolute;
+            top: 180px;
+            left: -109.70px;
+            z-index: 4;
+            opacity: 100%;
+            cursor: pointer;
+        }
+        .widget img { /* PADLOCK */
+            position: absolute;
+            top: -414.50px;
+            left: 81.20px;
+            z-index: 6;
+            cursor: pointer;
+        }
+        .signal img {  /* SINYAL */
+            position: absolute;
+            top: -234.50px;
+            left: 58.20px;
+            z-index: 200; 
+            cursor: pointer;         
+        }
+        .wifi img {  /* WIFI */
+            position: absolute;
+            top: -234.50px;
+            left: 73.90px;
+            z-index: 200; 
+            cursor: pointer;            
+        }
+        .battery img { /* BATTERY */
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: -235.60px;
+            left: 88.20px;
+            z-index: 200; 
+            cursor: pointer;           
+        }
+        .flashlight img {
+            width: 24px;
+            position: relative;
+            top: 2.-50px;
+            left: .-20px;
+            z-index: 200;
+        }
+        .flashlight {
+            width: 41px;
+            height: 41px;
+            background-color: rgba(0, 0, 0, 0.338); /* Warna latar belakang */
+            border-radius: 50%; /* Membuat elemen menjadi bulat dengan border-radius 50% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 173px;
+            left: -100px;
+            z-index: 200;
+            cursor: pointer;
+        }
+        .flashlight.light-on {
+            opacity: 1;
+            box-shadow: 0 0 40px rgb(0, 0, 0); /* Adjust the color and intensity of the light */
+            filter: invert(100%);
+        }
+        .hocam img {
+            width: 24px;
+            position: relative;
+            top: 2.-0px;
+            left: .-20px;
+            z-index: 200;
+        }
+        .hocam {
+            width: 41px;
+            height: 41px;
+            background-color: rgba(0, 0, 0, 0.338); /* Warna latar belakang */
+            border-radius: 50%; /* Membuat elemen menjadi bulat dengan border-radius 50% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 173px;
+            left: 60px;
+            z-index: 200;
+            cursor: pointer;
+        }
+        .clock-container {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #fdfff5;
+    font-size: 50px;
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    top: -141px;
+    left:5%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    cursor: pointer;
+        }
+.date-container {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #fdfff5;
+    white-space: nowrap;
+    font-size: 12px;
+    position: absolute;
+    top: -194px; /* Sesuaikan dengan posisi yang diinginkan */
+    left: 5%; /* Sesuaikan dengan posisi yang diinginkan */
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    cursor: pointer;
+}
+        .gesture-bar {
+      font-family: "Poppins", sans-serif;
+      position: fixed;
+      bottom:2.50px;
+      left: 0;
+      width: 100%;
+      height: 21.90px;
+      background-color: transparent;
+      border-top: 0px solid #ccc;
+      text-shadow: 2px 1px 2px rgb(255, 255, 255);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 14px;
+      color: #333;
+      cursor: progress;
+      z-index: 200;
+    }
+    .gesture-button {
+      width: 25%;
+      text-align: center;
+      padding: 5px 0;
+      cursor: pointer;
+    }
+    .gesture-strip {
+    justify-items: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    width: 90px;
+    height: 4px;
+    display: flex;
+    border-radius: 20px;
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-49%, 5650%);
+    z-index: 800;
+    opacity: 0.99;
+    cursor: pointer;
+}
+
+        #assistiveTouch {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: url(apple.png) center center no-repeat;
+            background-size: 39px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 500;
+            transition: background-color 0.5s, color 0.5s;
+            animation: fadeInOut 0.5s ease-in-out;
+        }
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        .wallOption {
+            width: 60px;
+            position: absolute;
+            top: -50px;
+            left: 150px;
+            white-space: nowrap;
+            border: none;
+            border-radius: 80px;
+            transition: .4s ease-in;
+            z-index: 500;
+            opacity: 1;
+            transition: opacity 0.10s ease-in-out;
+            cursor: pointer;
+        }
+        .wallOption.active {
+            opacity: 1;
+        }
+          /* Style for the dropdown container */
+    .wallChanger {
+      position: absolute;
+      top: -250px;
+      left: -205px;
+      display: inline-block;
+      z-index: 1000;
+    }
+
+    /* Style for the dropdown button */
+    .wallbtn {
+      background-color: #3498db;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Style for the dropdown content (hidden by default) */
+    .wallChanger-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      opacity: 0; /* Initial opacity set to 0 */
+      animation: fadeIn 0.6s ease-in-out; /* Apply the fadeIn animation */
+    }
+
+    /* Style for the dropdown options */
+    .wallChanger-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Change color on hover for options */
+    .wallChanger-content a:hover {
+      background-color: #ddd;
+    }
+
+    /* Show the dropdown content when the button is hovered */
+    .wallChanger:hover .wallChanger-content {
+      display: block;
+      opacity: 1; /* Set opacity to 1 on hover */
+    }
+
+    /* Keyframes for the fadeIn animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+       /*Tsel-PemiluDamai*/
+    .cardInfo p {
+        color: rgb(255, 255, 255);
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 7.40px;
+        white-space: nowrap;
+        position: absolute;
+        top: -240.50px;
+        left: -106px;
+        z-index: 400;
+    }
+    /*Pusat Pemberitahuan*/
+    .centerInfo p {
+        color: rgb(255, 255, 255);
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 12px;
+        white-space: nowrap;
+        position: absolute;
+        top: -100.50px;
+        left: -106px;
+        z-index: 400;
+    }
+    .boxsInfo {
+    background-color: #ffffff; /* Set a contrasting background color */
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 210px; /* Increase the width */
+    height: 45px; /* Increase the height */
+    position: absolute;
+    top: -60px;
+    left: -105.50px;
+    border-radius: 11px;
+    opacity: 0.9;
+    z-index: 900;
+}
+.boxs1 {
+    background-color: #ffffff; /* Set a contrasting background color */
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 210px; /* Increase the width */
+    height: 45px; /* Increase the height */
+    position: absolute;
+    top: -10px;
+    left: -105.50px;
+    border-radius: 15px;
+    opacity: 0.9;
+    z-index: 901;
+}
+.boxs2 {
+    background-color: #ffffff; /* Set a contrasting background color */
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 210px; /* Increase the width */
+    height: 45px; /* Increase the height */
+    position: absolute;
+    top: 40px;
+    left: -105.50px;
+    border-radius: 15px;
+    opacity: 0.9;
+    z-index: 901;
+}
+.boxs3 {
+    background-color: #ffffff; /* Set a contrasting background color */
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 210px; /* Increase the width */
+    height: 45px; /* Increase the height */
+    position: absolute;
+    top: 90px;
+    left: -105.50px;
+    border-radius: 15px;
+    opacity: 0.9;
+    z-index: 901;
+}
+/*Mobile Legend*/
+.bx {
+    display: flex; /* Make it a block-level element */
+    width: 35px; /* Set the width */
+    height: 35px; /* Set the height */
+    background: url(https://play-lh.googleusercontent.com/uWB-6_gXKU86gW8xsaDuuKL8fFPF3KqsRbsTMRnOzvsbd2YJM6dDtqL5XOHhr9AFgDw=w240-h480-rw) center center no-repeat;
+    background-size: cover; /* Ensure the image covers the container */
+    border-radius: 11px; /* Add border-radius for rounded corners */
+    margin: 20px; /* Add margin for spacing */
+    transition: transform 0.3s ease-in-out; /* Add a transition effect for hover */
+    position: absolute;
+    left: -14px;
+    cursor: pointer;
+}
+.bx:hover {
+    transform: scale(1.05); /* Scale up slightly on hover */
+}
+.bx-t {
+    color: #191B1A;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 9.50px;
+    position: absolute;
+    top: -2px;
+    left: 40px;
+    white-space: nowrap;
+}
+.bx-te {
+    color: #191B1A;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 10px;
+    position: absolute;
+    top: 9px;
+    left: 40px;
+    white-space: nowrap;
+}
+.bx-tex {
+    color: #191B1A;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 9.50px;
+    position: absolute;
+    top: 21px;
+    left: 40px;
+    white-space: nowrap;
+}
+/*Free Fire*/
+.bx1 {
+    display: flex; /* Make it a block-level element */
+    width: 35px; /* Set the width */
+    height: 35px; /* Set the height */
+    background: url(https://play-lh.googleusercontent.com/tM5rMqMkOPMyuRX_zKTWeVV6U2BvU2cMBILZmuIgjX_z9it3R_3aZZ0HwRLgxjvGGQ=w480-h960-rw) center center no-repeat;
+    background-size: cover; /* Ensure the image covers the container */
+    border-radius: 11px; /* Add border-radius for rounded corners */
+    margin: 20px; /* Add margin for spacing */
+    transition: transform 0.3s ease-in-out; /* Add a transition effect for hover */
+    position: absolute;
+    left: -14px;
+    cursor: pointer;
+}
+.bx1:hover {
+    transform: scale(1.05); /* Scale up slightly on hover */
+}
+.bx1-t {
+    color: #191B1A;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 9.50px;
+    position: absolute;
+    top: -2px;
+    left: 40px;
+    white-space: nowrap;
+}
+.bx1-te {
+    color: #191B1A;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 10px;
+    position: absolute;
+    top: 9px;
+    left: 40px;
+    white-space: nowrap;
+}
+.bx1-tex {
+    color: #191B1A;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 9.50px;
+    position: absolute;
+    top: 22px;
+    left: 40px;
+    white-space: nowrap;
+}
+
+    </style>
+</head>
+<body>
+    <div class="iphone" id="iphone">
+        <h1>Iphone 15 Pro Max</h1>
+        <div class="screen" id="screen"></div>
+        <div class="frontcam" id="frontcam"></div>
+        <div class="backside" id="backside"></div>
+        <div class="widget" id="widget">
+            <img src="https://i.ibb.co/L1ts8MW/padlock.png" alt="padlock" width="9.25px" height="9.25px">
+        </div>
+        <div class="signal" id="signal">
+            <img src="https://i.ibb.co/fNz9vsB/signal.png" alt="signal" width="11.25px" height="11.25px">
+        </div>
+        <div class="wifi" id="wifi">
+            <img src="https://i.ibb.co/7CMBRJb/wifi.png" alt="wifi" width="11.25px" height="11.25px">
+        </div>
+        <div class="battery" id="battery">
+            <img src="https://i.ibb.co/tmwJQpF/battery.png" alt="low-battery" width="11.25px" height="11.25px">
+        </div>
+        <div class="flashlight" id="flashlight">
+            <img src="https://i.ibb.co/KDmNWv4/flash.png" alt="flash">
+        </div>
+        <div class="hocam" id="hocam">
+            <img src="https://i.ibb.co/M748041/hocam.png" alt="hocam">
+        </div>
+        <div class="clock-container">
+            <div id="clock"></div>
+            </div>
+            <div class="gesture-strip" id="gesture-strip"></div>
+        <!-- Wallpaper Changer Option -->
+        <div class="wallChanger">
+            <button class="wallbtn">Click me</button>
+            <div class="wallChanger-content">
+                <a href="#" id="Wall1" onclick="changeWallpaper('wallpaper1')">Wallpaper 1</a>
+                <a href="#" id="Wall2" onclick="changeWallpaper('wallpaper2')">Wallpaper 2</a>
+                <a href="#" id="Wall3" onclick="changeWallpaper('wallpaper3')">Wallpaper 3</a>
+                <a href="#" id="Wall4" onclick="changeWallpaper('defaultWallpaper')">Default</a>
+            </div>
+        </div> 
+
+        <!-- Date & Clock Option -->
+        <div class="date-container" id="date"></div>
+        <div id="assistiveTouch">&#9776;</div>
+
+        <!--Notification center-->
+        <div class="cardInfo">
+            <p>Tsel-PemiluDamai</p>
+        </div>
+        <div class="centerInfo">
+            <p>Pusat Pemberitahuan</p>
+        </div>
+        <div class="boxsInfo">
+            <div class="bx" data-target="https://play-lh.googleusercontent.com/uWB-6_gXKU86gW8xsaDuuKL8fFPF3KqsRbsTMRnOzvsbd2YJM6dDtqL5XOHhr9AFgDw=w240-h480-rw">
+                <div class="bx-t">
+                    MOBILE LEGEND
+                </div>
+                <div class="bx-te">
+                    Event Notification!
+                </div>
+                <div class="bx-tex">
+                    Dapatkan badge conten creat...
+                </div>
+            </div>
+        </div>
+        <div class="boxs1">
+            <div class="bx1" data-target="https://play.google.com/store/apps/details?id=com.dts.freefireth">
+            <div class="bx1-t">
+                FREE FIRE
+            </div>
+            <div class="bx1-te">
+                Alok Gratis Coy!
+            </div>
+            <div class="bx1-tex">
+                Yuk tambahkan koleksi karakt...
+            </div>
+        </div>
+    <script>
+        // Real-time clock :)
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+
+            const timeString = `${hours}.${minutes}`;
+
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        // Panggil fungsi updateClock setiap detik
+        setInterval(updateClock, 1000);
+
+        // Panggil untuk pertama kali saat halaman dimuat
+        updateClock();
+
+        function updateDate() {
+            const now = new Date();
+            const dayNames = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const day = dayNames[now.getDay()];
+            const date = now.getDate().toString().padStart(2, '0');
+            const month = monthNames[now.getMonth()];
+            const year = now.getFullYear();
+
+            const dateString = `${day}, ${date} ${month} ${year}`;
+
+            document.getElementById('date').textContent = dateString;
+        }
+
+        // Panggil fungsi updateDate setiap detik
+        setInterval(updateDate, 1000);
+
+        // Panggil untuk pertama kali saat halaman dimuat
+        updateDate();
+// Assasistive Touch //
+const assistiveTouch = document.getElementById('assistiveTouch');
+        const body = document.body;
+
+        // Fungsi untuk menangani klik pada ikon
+        function handleIconClick() {
+            // Toggle warna latar belakang antara putih dan hitam
+            body.style.backgroundColor = (body.style.backgroundColor === 'white') ? 'black' : 'white';
+            
+            // Toggle warna ikon antara hitam dan putih
+            const isBlackBackground = body.style.backgroundColor === 'black';
+            assistiveTouch.style.backgroundColor = isBlackBackground ? 'white' : 'black';
+            assistiveTouch.style.color = isBlackBackground ? 'black' : 'white';
+        }
+
+        // Fungsi untuk mengaktifkan pergerakan ikon
+        function enableDrag() {
+            let offsetX, offsetY;
+
+            function dragStart(e) {
+                offsetX = e.clientX - assistiveTouch.getBoundingClientRect().left;
+                offsetY = e.clientY - assistiveTouch.getBoundingClientRect().top;
+
+                document.addEventListener('mousemove', dragMove);
+                document.addEventListener('mouseup', dragEnd);
+            }
+
+            function dragMove(e) {
+                const x = e.clientX - offsetX;
+                const y = e.clientY - offsetY;
+
+                assistiveTouch.style.left = `${x}px`;
+                assistiveTouch.style.top = `${y}px`;
+            }
+
+            function dragEnd() {
+                document.removeEventListener('mousemove', dragMove);
+                document.removeEventListener('mouseup', dragEnd);
+            }
+
+            assistiveTouch.addEventListener('mousedown', dragStart);
+        }
+
+        assistiveTouch.addEventListener('click', handleIconClick);
+        enableDrag();
+
+        // Wallpaper Option
+    
+    // Setting 
+    function toggleButtons() {
+        var wallOption = document.getElementById('wallOption');
+        wallOption.style.display = (wallOption.style.display === 'none' || wallOption.style.display === '') ? 'block' : 'none';
+    }
+        function buttonAction(buttonText) {
+            alert(`Button ${buttonText} pressed!`);
+        }
+
+    // Fungsi untuk mengganti wallpaper berdasarkan nama gambar
+    function changeWallpaper(wallpaperName) {
+        const wallpaperElement = document.getElementById('screen');
+        const imageUrl = getWallpaperUrl(wallpaperName);
+        wallpaperElement.style.backgroundImage = `url(${imageUrl})`;
+    }
+    // Fungsi untuk mendapatkan URL gambar wallpaper berdasarkan nama
+    function getWallpaperUrl(wallpaperName) {
+        switch (wallpaperName) {
+            case 'wallpaper1':
+                return 'https://i.ibb.co/XWXkj1r/wallpaper3.png'; // Ganti dengan URL gambar wallpaper 1
+            case 'wallpaper2':
+                return 'https://i.ibb.co/nm9YmNS/wallpaper2.png'; // Ganti dengan URL gambar wallpaper 2
+            case 'wallpaper3':
+                return 'https://i.ibb.co/1GNRhB1/wallpaper2.png'; // Ganti dengan URL gambar wallpaper 3
+            default:
+                return 'https://i.ibb.co/qgGRL7s/Default.jpg'; // Ganti dengan URL gambar default atau tindakan lain
+        }
+    }
+            // Event listener for hocam element
+            document.getElementById('hocam').addEventListener('click', function() {
+            var hocamImage = document.getElementById('hocam').getElementsByTagName('img')[0];
+
+            // Change the image source when clicked
+            hocamImage.src = 'https://i.ibb.co/Lg3mJYT/kamera.png'; // Replace with the URL of your new image
+
+            // Set a timeout to revert the image back after 2 seconds
+            setTimeout(function() {
+                hocamImage.src = 'https://i.ibb.co/M748041/hocam.png'; // Replace with the URL of your original image
+            }, 2000);
+        });
+               // Variable to track the flashlight state (on/off)
+               var isFlashlightOn = false;
+
+                       // Event listener for flashlight element
+        document.getElementById('flashlight').addEventListener('click', function() {
+            // Toggle the flashlight state
+            var flashlightElement = document.getElementById('flashlight');
+            flashlightElement.classList.add('light-on');
+
+            // Set timeout to remove the light effect after 2 seconds
+            setTimeout(function() {
+                flashlightElement.classList.remove('light-on');
+            }, 2000);
+            //App on center notification
+        });
+    </script>
+</body>
+</html>
+
+
+
