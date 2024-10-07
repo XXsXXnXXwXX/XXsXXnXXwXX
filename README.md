@@ -1,7 +1,7 @@
 ### What u looking 4, this just my pratice
 
 <!--
-**XXsXXnXXwXX/XXsXXnXXwXX** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**Amba GTPS** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 
